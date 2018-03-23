@@ -2,10 +2,11 @@ import Component from '@ember/component';
 import fabric from 'fabric';
 import { computed } from '@ember/object';
 export default Component.extend({
-    canvas:computed(()=>{
-        return new fabric.Canvas('canvasId',{
-            width:800,
-            height:600,
+    canvas_id :`canvas_${Date.now()}`,
+    canvas:computed(function (){
+        return new fabric.Canvas(this.get('canvas_id'),{
+                width:this.get('width') || 400,
+                height:this.get('height') || 400,
             backgroundColor: 'rgb(100,100,200)'})
     }),
     textValue:'hello',
